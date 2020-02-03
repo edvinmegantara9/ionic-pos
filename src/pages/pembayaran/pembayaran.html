@@ -1,0 +1,44 @@
+<!--
+  Generated template for the Pembayaran page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Pembayaran</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <button ion-button full icon-left *ngFor="let data of Order">
+      <ion-icon name="cash"></ion-icon>
+      Total : Rp. {{data.grandtotal | number }},-
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Metode Pembayaran
+    </ion-card-header>
+    <ion-card-content>
+    <ion-segment [(ngModel)]="jns_pembayaran">
+      <ion-segment-button value="TUNAI">
+        Tunai
+      </ion-segment-button>
+      <ion-segment-button value="KARTU">
+        Kartu
+      </ion-segment-button>
+    </ion-segment>
+
+      <ion-item>
+        <ion-label stacked>Uang yang dibayarkan</ion-label>
+        <ion-input #focusInput type="number" text-center placeholder="0" [(ngModel)]="total_bayar"></ion-input>
+      </ion-item>
+
+    <button ion-button full icon-left color="secondary" (click)="finishOrderTapped()"><ion-icon name="cash"></ion-icon> Bayar</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

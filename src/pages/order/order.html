@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Buat Order</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <button ion-button full icon-left (click)="memberTapped()">
+      <ion-icon name="md-people"></ion-icon> 
+      {{nama_member}}
+    </button>
+  </ion-toolbar>
+  <ion-searchbar [(ngModel)]="term" [debounce]="500" placeholder="Cari item..."></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngFor="let data of list_item | filter:term">
+      <ion-item (click)="addItem(data.kd_item)" *ngIf="data.qty==0" >
+        <ion-avatar item-left>
+          <img src="assets/img/user.png">
+        </ion-avatar>
+        <h2>{{data.nama}}</h2>
+        <p>Rp. {{data.price | number}},-</p>
+      </ion-item>
+      <ion-item *ngIf="data.qty>0">
+        <ion-avatar item-left>
+          <button ion-button color="danger" (click)="removeItem(data.kd_item)"><ion-icon name="remove"></ion-icon></button>
+        </ion-avatar>
+        <h2>{{data.nama}}</h2>
+        <p>Rp. {{data.price | number}},-</p>
+        <h1 item-right>x {{ data.qty }}</h1>
+        <ion-avatar item-right>
+          <button ion-button (click)="addItem(data.kd_item)"><ion-icon name="add" ></ion-icon></button>
+        </ion-avatar>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button full (click)="orderDetailTapped()">
+      Biaya : {{ total | number }},-
+    </button>
+  </ion-toolbar>
+</ion-footer>

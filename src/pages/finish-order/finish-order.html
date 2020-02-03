@@ -1,0 +1,32 @@
+<!--
+  Generated template for the FinishOrder page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Selesai Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card text-center>
+    <ion-card-header *ngFor="let data of Order">
+      Kembali : Rp. {{data.total_bayar - data.grandtotal | number}},-
+    </ion-card-header>
+    <ion-card-content>
+      <h3>Dibayar dengan TUNAI</h3>
+      <br />
+      <ion-item>
+        <ion-label stacked>Kirim struk via email</ion-label>
+        <ion-input type="text"  placeholder="Email" ></ion-input>
+      </ion-item>
+
+    <button ion-button full icon-left color="secondary" (click)="backToOrder()">Selesai</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
